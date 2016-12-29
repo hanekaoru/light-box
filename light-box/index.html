@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head> 
+<meta charset="utf-8"/>
+<title>light-box</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, width=device-width">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name='apple-touch-fullscreen' content='yes'>
+<link rel="stylesheet" href="css/swipebox.css">
+<style>
+*{ margin:0; padding:0}
+html{ font-size:12px;}
+body { font-family:"微软雅黑";margin: 0px;padding: 0px; background:#ffffff;color:#333; font-size:1.2rem; overflow-x:hidden;}
+li {list-style-type: none;}
+a {color:#545454;text-decoration: none}
+img{ border:none;}
+
+#imgIndex {position: absolute;bottom: 70px;left: 12px;color: #fff;font-size: .6rem;}
+</style>
+</head>
+<body>
+
+    <div class="main">
+        <div class="cont"></div>
+    </div>
+
+<script type="text/javascript" src="https://cdn.staticfile.org/jquery/2.1.1/jquery.js"></script>
+<script type="text/javascript" src="js/swipebox.js"></script>
+<script>
+
+
+    $(function(){
+    
+        var data = "|http://qtwoss.qtbigdata.com/jph_147934612341693d0dd9d-db5f-4a7c-8a15-fcc4f08a208c?x-oss-process=image/resize,w_640,limit_0|http://qtwoss.qtbigdata.com/jph_14793461234572cfe9f68-3c81-4ebe-ba2f-eae0df040451?x-oss-process=image/resize,w_640,limit_0|http://qtwoss.qtbigdata.com/jph_14793461235127dba73e4-36bd-4164-b1b9-e7a3c49889d6?x-oss-process=image/resize,w_640,limit_0|http://qtwoss.qtbigdata.com/jph_1479346123513e091422b-f1f4-47da-9216-d294ba1c121f?x-oss-process=image/resize,w_640,limit_0|http://qtwoss.qtbigdata.com/jph_1479346123670d077f9e0-b681-4ad9-b168-66aec1c5f411?x-oss-process=image/resize,w_640,limit_0|http://qtwoss.qtbigdata.com/jph_147934612365026014305-0114-4823-8803-2cfead03c379?x-oss-process=image/resize,w_640,limit_0";
+                    
+        var img = data.split("|").slice(1);
+
+        for (var i = 0; i < img.length; i++) {
+            var str = "";
+            str += "<a href=" + img[i] + " class='swipebox' title='这里是title'><img src=" + img[i] + "></a>";
+            $(".cont").append(str);   
+        }
+
+        $("#portrait").html("<img src=" + data.portrait +  " onerror=" + "javascript:this.src=''" + ">")
+
+        $(".swipebox").swipebox();
+
+        $(".cont img:first").click();
+
+        $("#all").html(img.length)
+
+    });
+    
+</script>
+
+</body>
+</html>
